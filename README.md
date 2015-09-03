@@ -1,6 +1,6 @@
 # meteor-boilerplate
 
-A starting point for MeteorJS applications. Includes iron-router, Bootstrap 3, Font Awesome, LESS and more.
+A starting point for MeteorJS applications. Includes Flow Router, Bootstrap 3, Font Awesome, LESS and more.
 
 * [Included Packages](#included-packages)
 * [Installation](#installation)
@@ -17,8 +17,9 @@ A starting point for MeteorJS applications. Includes iron-router, Bootstrap 3, F
   * [matb33:collection-hooks](https://github.com/matb33/meteor-collection-hooks)
   * [reywood:publish-composite](https://github.com/englue/meteor-publish-composite)
 * Router:
-  * [iron:router](https://github.com/EventedMind/iron-router)
-  * [zimme:iron-router-active](https://github.com/zimme/meteor-iron-router-active)
+  * [kadira:flow-router](https://github.com/kadirahq/flow-router)
+  * [kadira:blaze-layout](https://github.com/kadirahq/blaze-layout)
+  * [zimme:active-route](https://github.com/zimme/meteor-active-route)
   * [yasinuslu:blaze-meta](https://github.com/yasinuslu/blaze-meta)
 * Authentication
   * [splendido:accounts-templates-bootstrap](https://github.com/splendido/accounts-templates-bootstrap)
@@ -49,7 +50,7 @@ A starting point for MeteorJS applications. Includes iron-router, Bootstrap 3, F
 
 ## <a name="file-structure"></a> File Structure
 
-We have a common file structure we use across all of our Meteor apps. Client-only files are stored in the `client` directory, server-only files are stored in the `server` directory, and shared files are stored in the `both` directory. The `private` and `public` directories are for either private or public assets. 
+We have a common file structure we use across all of our Meteor apps. Client-only files are stored in the `client` directory, server-only files are stored in the `server` directory, and shared files are stored in the `both` directory. Because we use Flow Router here, route-specific files are stored inside `lib/router` directory. The `private` and `public` directories are for either private or public assets. 
 
 ## <a name="bootstrap-and-less"></a> Bootstrap and LESS
 
@@ -82,28 +83,9 @@ The reason that this is done is to avoid any issues when the LESS files are comp
 
 ## <a name="seo"></a> SEO
 
-Page titles, meta descriptions and Facebook and Twitter meta tags are handled by the [yasinuslu:blaze-meta](https://github.com/yasinuslu/blaze-meta) package. Global settings are configured in `both/router/meta.js`, while individual page settings are set at the controller level.
+Page titles, meta descriptions and Facebook and Twitter meta tags are handled by the [yasinuslu:blaze-meta](https://github.com/yasinuslu/blaze-meta) package. Global settings are configured in `both/router/meta.js`.
 
 * Note: the `spiderable` package will need to be installed and configured on your server in order for bots to read your meta tags.
-
-```javascript
-PostsShowController = AppController.extend({
-  path: '/posts/:_id',
-  waitOn: function() {
-    return this.subscribe('post', params._id);
-  },
-  data: function() {
-    return {
-      post: Post.find({_id: params._id})
-    };
-  },
-  onAfterAction: function() {
-    if(this.ready()) {
-      Meta.setTitle(this.data().post.title);
-    }
-  }
-});
-```
 
 ## <a name="favicons-and-touch-icons"></a> Favicons and Touch Icons
 

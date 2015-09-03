@@ -40,13 +40,17 @@ A starting point for MeteorJS applications. Includes Flow Router, Bootstrap 3, F
 
 1. Clone this repo to `<yourapp>`
 
-  `git clone https://github.com/Differential/meteor-boilerplate.git <yourapp>`
+  `git clone https://github.com/michaltakac/meteor-boilerplate.git <yourapp>`
 
-2. Remove `.git`
+2. Switch to `flow-router` branch
 
-  `cd <yourapp> && rm -rf .git`
+  `cd <yourapp> && git checkout flow-router`
 
-3. Start coding!
+3. Remove `.git`
+
+  `rm -rf .git`
+
+4. Start coding!
 
 ## <a name="file-structure"></a> File Structure
 
